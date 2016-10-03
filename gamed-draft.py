@@ -11,10 +11,10 @@ if not pygame.mixer: print 'Warning, sound disabled'
 WINDOWWIDTH = 750
 WINDOWHEIGHT = 500
 
-FPS = 150
+FPS = 60
 MOVESPEED = 15
-GRAVITY = 1
-JUMPHEIGHT = -15 # lower is higher jump arc
+GRAVITY = .5
+JUMPHEIGHT = -10 # lower is higher jump arc
 
 
 def load_image(name, colorkey=None):
@@ -24,7 +24,7 @@ def load_image(name, colorkey=None):
     except pygame.error, message:
         print 'Cannot load image:', name
         raise SystemExit, message
-    image = image.convert()
+    image = image.convert_alpha()
     if colorkey is not None:
         if colorkey is -1:
             colorkey = image.get_at((0,0))
@@ -36,8 +36,8 @@ class Player(pygame.sprite.Sprite):
     def __init__(self):
         pygame.sprite.Sprite.__init__(self)
 
-        running = load_image('sprite-running.png')
-        standing = load_image('sprite-standing.png')
+        running = load_image('1.png')
+        standing = load_image('2.png')
 
         self.anim_obj = pyganim.PygAnimation([(standing, 0.2), (running, 0.2)])
 
