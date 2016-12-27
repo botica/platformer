@@ -3,4 +3,6 @@
 
 no levels have been implmented, just character physics
 
+you can play it by running $python gameddraft
 
+yes thats two dds
