@@ -36,10 +36,10 @@ class Player(pygame.sprite.Sprite):
     def __init__(self):
         pygame.sprite.Sprite.__init__(self)
 
-        running = load_image('1.png')
-        standing = load_image('2.png')
+        running = load_image('11.png')
+        standing = load_image('22.png')
 
-        self.anim_obj = pyganim.PygAnimation([(standing, 0.2), (running, 0.2)])
+        self.anim_obj = pyganim.PygAnimation([(standing, 1), (running, 1)])
 
         self.image = standing
         self.rect = self.image.get_rect()
