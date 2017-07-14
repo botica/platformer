@@ -1,6 +1,6 @@
 # platformer
-2d super mario style platformer game in-progress written in python using modules pygame and pyganim
+2d super mario style platformer physics simulation using modules pygame and pyganim
 
-no levels have been implmented, just character physics
+no levels implmented, just character physics
 
-you can play it by running $python gamed-draft.py
+play it with $python gamed-draft.py
