@@ -1,20 +1,15 @@
-# inertia, scrolling offset effect
-
 import os, sys
 import pygame
 from pygame.locals import *
 import pyganim
 
-if not pygame.font: print 'Warning, fonts disabled'
-if not pygame.mixer: print 'Warning, sound disabled'
-
 WINDOWWIDTH = 750
 WINDOWHEIGHT = 500
 
-FPS = 60
-MOVESPEED = 15
-GRAVITY = .5
-JUMPHEIGHT = -10 # lower is higher jump arc
+FPS = 40
+MOVESPEED = 16
+GRAVITY = .8
+JUMPHEIGHT = -12 # lower is higher jump arc
 
 
 def load_image(name, colorkey=None):
@@ -36,8 +31,8 @@ class Player(pygame.sprite.Sprite):
     def __init__(self):
         pygame.sprite.Sprite.__init__(self)
 
-        running = load_image('11.png')
-        standing = load_image('22.png')
+        running = load_image('mario-standing.png')
+        standing = load_image('mario-running.png')
 
         self.anim_obj = pyganim.PygAnimation([(standing, 1), (running, 1)])
 
@@ -144,7 +139,7 @@ class Player(pygame.sprite.Sprite):
             self.anim_obj.play()
         else:
             self.anim_obj.pause()
-            if self.anim_obj.getCurrentFrame() != self.anim_obj.getFrame(0):
+            if self.anim_obj.getCurrentFrame() != self.anim_obj.getFrame(1):
                 self.anim_obj.prevFrame()
 
     def update(self):
@@ -156,13 +151,12 @@ class Player(pygame.sprite.Sprite):
 class Wall(object):
     
     def __init__(self, pos):
-        self.rect = pygame.Rect(pos[0], pos[1], 15, 15) #width/height
+        self.rect = pygame.Rect(pos[0], pos[1], 25, 25) #width/height
 
 
 #Initialize Everything
 pygame.init()
 screen = pygame.display.set_mode((WINDOWWIDTH, WINDOWHEIGHT))
-pygame.display.set_caption('get it')
 
 #Create The Backgound
 background = pygame.Surface(screen.get_size())
